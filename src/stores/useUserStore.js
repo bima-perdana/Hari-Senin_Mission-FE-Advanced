@@ -1,11 +1,12 @@
-import create from 'zustand';
-import api from './api';
-import { list } from 'postcss';
+import { create } from 'zustand';
+import api from '../services/api';
 
-const userUserStore = create ((set) => ({
+const useUserStore = create((set) => ({
     listUsers: [],
     setListUsers: (listUsers) => set({ listUsers }),
-    //GET USER
+    isLoading: false,
+
+    // GET USER
     fetchUsers: async () => {
         set({ isLoading: true });
         try {
@@ -18,18 +19,19 @@ const userUserStore = create ((set) => ({
         }
     },
 
-    //POST USER
+    // POST USER
     addUser: async (newUser) => {
         try {
             const res = await api.post('/users', newUser);
             set((state) => ({
-                listUsers: [...state.listUsers, res.data]}));
+                listUsers: [...state.listUsers, res.data]
+            }));
         } catch (error) {
             console.error(error);
         }
     },
 
-    //UPDATE USER
+    // UPDATE USER
     updateUser: async (id, updatedUser) => {
         try {
             const res = await api.put(`/users/${id}`, updatedUser);
@@ -43,12 +45,12 @@ const userUserStore = create ((set) => ({
         }
     },
 
-    //DELETE USER
+    // DELETE USER
     deleteUser: async (id) => {
         try {
-            await api.delete('/users/${id}');
+            await api.delete(`/users/${id}`);
             set((state) => ({
-                users: state.listUser.filter((user) => user.id !== id),
+                listUsers: state.listUsers.filter((user) => user.id !== id),
             }));
         } catch (error) {
             console.error(error);
@@ -56,4 +58,4 @@ const userUserStore = create ((set) => ({
     },
 }));
 
-export default userUserStore;
+export default useUserStore;

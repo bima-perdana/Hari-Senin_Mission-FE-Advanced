@@ -6,7 +6,7 @@ const Banner = (props) => {
             <div className='absolute inset-0 bg-black opacity-70 rounded-[10px] h-[400px]'></div> 
             <div className='relative flex flex-col w-full h-full justify-center items-center text-center xl:px-[140px] xl:pb-16 xl:pt-[82px] xl:gap-3 hp:px-5 hp:py-5 sm:px-6 sm:py-10'>
                 <div className='flex flex-col hp:gap-6 sm:gap-4'>
-                    <h1 className>{props.header}</h1>
+                    <h1>{props.header}</h1>
                     <p className='text-banner'>
                         {props.desc}
                     </p>
@@ -27,15 +27,15 @@ const BannerCTA = (props) => {
                     <div className='relative flex flex-col w-[525px] justify-center rounded gap-10 lg:mb-3 hp:py-0 hp:px-5'>
                         <div className='flex flex-col gap-1 '>
                             <p className='text-hbanner text-center'>{props.title}</p>
-                            <h3 class='text-center text-white'>{props.header}</h3>
+                            <h3 className='text-center text-white'>{props.header}</h3>
                             <p className='text-banner'>{props.desc}</p>
                         </div>
                         <div className='lg:relative hp:flex hp:flex-col hp:gap-4'>
                             <div className="lg:h-[58px]">
-                                <input type="text" class="lg:h-full lg:focus:shadow lg:focus:outline-none lg:py-2 lg:pl-8 lg:pr-2 lg:gap-5 hp:text-center lg:text-left" placeholder="Masukkan Emailmu"/>
+                                <input type="text" className="lg:h-full lg:focus:shadow lg:focus:outline-none lg:py-2 lg:pl-8 lg:pr-2 lg:gap-5 hp:text-center lg:text-left" placeholder="Masukkan Emailmu"/>
                             </div>
-                            <div class="lg:absolute lg:top-2 lg:right-2 lg:w-[132px] lg:h-[42px]">
-                                <button class="btn-cta lg:h-full hp:h-10 hover:bg-red-600">Subscribe</button>
+                            <div className="lg:absolute lg:top-2 lg:right-2 lg:w-[132px] lg:h-[42px]">
+                                <button className="btn-cta lg:h-full hp:h-10 hover:bg-red-600">Subscribe</button>
                             </div>
                         </div>
                     </div>

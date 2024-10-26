@@ -1,13 +1,13 @@
 import useUserStore from '../stores/useUserStore';
 
 export const useUserCrud = () => {
-    const listUser = useUserStore((state) => state.listUser);
-    const setListUser = useUserStore((state) => state.setListUser);
+    const listUsers = useUserStore((state) => state.listUsers);
+    const setListUsers = useUserStore((state) => state.setListUsers);
 
-    const fetchUser = useUserStore((state) => state.fetchUser);
+    const fetchUsers = useUserStore((state) => state.fetchUsers);
     const addUser = useUserStore((state) => state.addUser);
     const updateUser = useUserStore((state) => state.updateUser);
     const deleteUser = useUserStore((state) => state.deleteUser);
 
-    return { listUser, setListUser, fetchUser, addUser, updateUser, deleteUser };
+    return { listUsers, setListUsers, fetchUsers, addUser, updateUser, deleteUser };
 }

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const apiURL = process.env.API.URL;
+const apiURL = import.meta.env.API_URL;
 
 const api = axios.create({
-    baseURL: apiURL,
+    baseURL: 'https://671c50842c842d92c38295e6.mockapi.io/api/videobelajar',
     headers: {
         'Content-Type': 'application/json',
     },
