@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import ava from '../../../../assets/ava-photos/ava-profile.png';
-import hidePass from '../../../../assets/form/mdi_eye-off.png';
-import showPass from '../../../../assets/form/mdi_eye-on.png';
+import ava from '/src/assets/ava-photos/ava-profile.png';
+import hidePass from '/src/assets/form/mdi_eye-off.png';
+import showPass from '/src/assets/form/mdi_eye-on.png';
 
 const FormProfile = () => {
     const [profile, setProfile] = useState({

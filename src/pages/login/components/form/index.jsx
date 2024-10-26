@@ -1,10 +1,14 @@
-import logoGoogle from '../../../../assets/logos/logos_google-icon.png';
-import hidePass from '../../../../assets/form/mdi_eye-off.png'; //Icon untuk menutup kata sandi
-import showPass from '../../../../assets/form/mdi_eye-on.png';   
+import logoGoogle from '/src/assets/logos/logos_google-icon.png';
+import hidePass from '/src/assets/form/mdi_eye-off.png'; //Icon untuk menutup kata sandi
+import showPass from '/src/assets/form/mdi_eye-on.png';   
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUserCrud } from '/src/hooks/useUserCrud';
 
 const FormLogin = () => {
+
+    const { listUser } = useUserCrud();
 
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
