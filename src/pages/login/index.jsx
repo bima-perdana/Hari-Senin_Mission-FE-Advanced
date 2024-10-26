@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import FormLogin from '../components/form/form-login.jsx';
-import Nav from '../components/nav/index.jsx';
+import FormLogin from './components/form/index.jsx';
+import Nav from '../../components/nav/beforeLogin/index.jsx';
 const Login = () => {
         
         useEffect(() => {

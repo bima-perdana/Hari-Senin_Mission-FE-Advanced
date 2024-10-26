@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import Banner from '../components/banner/index.jsx';
-import { BannerCTA } from '../components/banner/index.jsx';
-import MenuHome from '../components/menu/menu-home.jsx';
-import CardHolder from '../components/card/card-holder.jsx';
-import Footer from '../components/footer/index.jsx';
+import Banner from '../../components/banner/index.jsx';
+import { BannerCTA } from '../../components/banner/index.jsx';
+import MenuHome from './components/menu/index.jsx';
+import CardHolder from './components/cardHolder/card-holder.jsx';
+import Footer from '../../components/footer/index.jsx';
 
 
 const Home = () => {

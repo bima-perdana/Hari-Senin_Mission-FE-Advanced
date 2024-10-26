@@ -1,4 +1,4 @@
-import rectangle from '../../assets/menu/Rectangle 22971.png' //Garis bawah untuk menu
+import rectangle from '../../../../assets/menu/Rectangle 22971.png' //Garis bawah untuk menu
 
 const MenuHome = () => {
     return (

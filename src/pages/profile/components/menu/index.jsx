@@ -1,6 +1,6 @@
-import icon1 from '../../assets/icons/icon-1.png';
-import icon2 from '../../assets/icons/icon-2.png';
-import icon3 from '../../assets/icons/icon-3.png';
+import icon1 from '../../../../assets/icons/icon-1.png';
+import icon2 from '../../../../assets/icons/icon-2.png';
+import icon3 from '../../../../assets/icons/icon-3.png';
 
 const MenuProfile = () => {
 

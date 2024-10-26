@@ -1,6 +1,6 @@
-import logoGoogle from '../../assets/logos/logos_google-icon.png';
-import hidePass from '../../assets/form/mdi_eye-off.png';
-import showPass from '../../assets/form/mdi_eye-on.png';
+import logoGoogle from '../../../../assets/logos/logos_google-icon.png';
+import hidePass from '../../../../assets/form/mdi_eye-off.png';
+import showPass from '../../../../assets/form/mdi_eye-on.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Nav from '../components/nav/index.jsx';
-import FormRegister from '../components/form/form-register.jsx';
+import Nav from '../../components/nav/beforeLogin/index.jsx';
+import FormRegister from './components/form/index.jsx';
 
 
 const register = () => {

@@ -1,4 +1,4 @@
-import rate from '../../assets/rate/Rating.png';
+import rate from '/src/assets/rate/Rating.png';
 
 const Card = (props) => {
     return (

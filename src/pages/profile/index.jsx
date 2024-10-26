@@ -1,7 +1,7 @@
 
-import FormProfile from '../components/form/form-profile.jsx';
-import MenuProfile from '../components/menu/menu-profile.jsx';
-import Footer from '../components/footer/index.jsx';
+import FormProfile from './components/form/index.jsx';
+import MenuProfile from './components/menu/index.jsx';
+import Footer from '../../components/footer/index.jsx';
 import {useEffect} from 'react'
 
 const Profile = () => {

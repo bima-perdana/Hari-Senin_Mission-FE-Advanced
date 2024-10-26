@@ -4,10 +4,10 @@ import {
 } from "react-router-dom";
 
 import Home from './Home.jsx';
-import LoginPage from './pages/login.jsx';
-import RegisterPage from './pages/register.jsx';
-import HomePage from './pages/home.jsx';
-import ProfilePage from './pages/profile.jsx';
+import LoginPage from './pages/login/index.jsx';
+import RegisterPage from './pages/register/index.jsx';
+import HomePage from './pages/home/index.jsx';
+import ProfilePage from './pages/profile/index.jsx';
 
 const App = () => {
   const router = createBrowserRouter([
