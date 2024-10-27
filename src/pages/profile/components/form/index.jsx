@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { useUserCrud } from '/src/hooks/useUserCrud';
 
 const FormProfile = () => {
-    const { listUsers, fetchUsers, updateUser } = useUserCrud();
+    const { listUsers, fetchUsers, updateUser, deleteUser } = useUserCrud();
     const navigate = useNavigate();
-    const [profile, setProfile] = useState({});  // Profil asli
-    const [tempProfile, setTempProfile] = useState({}); // Profil sementara untuk pengeditan
+    const [profile, setProfile] = useState({}); 
+    const [tempProfile, setTempProfile] = useState({}); 
     const [showPassword, setShowPassword] = useState(false);
     const [showRePassword, setShowRePassword] = useState(false);
 
@@ -19,28 +19,35 @@ const FormProfile = () => {
         if (storedUser) {
             const parsedUser = JSON.parse(storedUser);
             setProfile(parsedUser);
-            setTempProfile(parsedUser); // Set tempProfile untuk mengedit tanpa langsung mengubah profile
+            setTempProfile(parsedUser); 
         }
     }, []);
 
-    // Toggle visibility for password fields
+
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
     const toggleRePasswordVisibility = () => setShowRePassword(!showRePassword);
 
-    // Handler untuk perubahan input
+
     const handleInputChange = (res) => {
         const { name, value } = res.target;
         setTempProfile({ ...tempProfile, [name]: value });
     };
 
-    // Simpan perubahan tempProfile ke profile asli
+
     const handleSave = () => {
-        setProfile(tempProfile); // Update profil dengan nilai baru dari tempProfile
+        setProfile(tempProfile); 
         localStorage.setItem('user', JSON.stringify(tempProfile));
         updateUser(profile.id, tempProfile);
 
         console.log(listUsers)
     };
+
+
+    const handleDelete = () => {
+        deleteUser(profile.id);
+        navigate('/login');
+    };
+
 
     return (
         <div className='flex flex-col w-full border rounded-[10px] p-6 gap-6'>
@@ -137,7 +144,7 @@ const FormProfile = () => {
                         name="confirm_password" 
                         id="confirm_password" 
                         className="input-form pr-10"
-                        value={tempProfile.confirm_password || ""}
+                        value={tempProfile.password || ""}
                         onChange={handleInputChange}
                     />
                     <img 
@@ -155,7 +162,8 @@ const FormProfile = () => {
                     onClick={handleSave}>
                     Simpan</button>                
                     <button type='button' 
-                    className="btn-login bg-red-500 hover:bg-red-700 hp:hidden xl:block">
+                    className="btn-login bg-red-500 hover:bg-red-700 hp:hidden xl:block"
+                    onClick={handleDelete}>
                     Hapus</button>
                 </div>
             </div>

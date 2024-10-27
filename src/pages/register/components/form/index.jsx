@@ -4,19 +4,19 @@ import showPass from '/src/assets/form/mdi_eye-on.png';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserCrud } from '/src/hooks/useUserCrud';
+import { useUserPassword } from '/src/hooks/useUserPassword'
 
 const FormRegister = () => {
     const { fetchUsers, addUser } = useUserCrud();
+    const {password, setPassword, setRePassword, checkPassword } = useUserPassword(); 
     const [addUserForm, setAddUserForm] = useState({
         name: "",
         email: "",
-        phone: { negara: "", nomor: "" },
+        phone: { negara: "indonesia", nomor: "" },
         password: "",
     });
 
     const navigate = useNavigate();
-    const [password, setPassword] = useState("");
-    const [rePassword, setRePassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [showRePassword, setShowRePassword] = useState(false);
 
@@ -30,10 +30,7 @@ const FormRegister = () => {
     const handleRegister = (event) => {
         event.preventDefault();
         
-        if (password !== rePassword) {
-            alert("Password tidak sama");
-            return;
-        }
+        if(!checkPassword()) return;
 
         const updatedUserForm = { ...addUserForm, password: password };
         addUser(updatedUserForm);
@@ -55,14 +52,16 @@ const FormRegister = () => {
                             <div className='flex gap-1'>Nama Lengkap<p className='text-red-600'>*</p></div>
                         </label>
                         <input type="text" name="fullname" className='input-form' id="fullname" 
-                            onChange={(res) => setAddUserForm({...addUserForm, name: res.target.value})}/>
+                            onChange={(res) => setAddUserForm({...addUserForm, name: res.target.value})} 
+                            required/>
                     </div>
                     <div>
                         <label htmlFor="email" className="text-input">
                             <div className='flex gap-1'>E-Mail<p className='text-red-600'>*</p></div>
                         </label>
                         <input type="email" name="email" className='input-form' id="email" 
-                            onChange={(res) => setAddUserForm({...addUserForm, email: res.target.value})}/>                    
+                            onChange={(res) => setAddUserForm({...addUserForm, email: res.target.value})}
+                            required/>                    
                     </div>
                     <div>
                         <label htmlFor="phone" className="textinput">
@@ -70,9 +69,11 @@ const FormRegister = () => {
                         </label>
                         <div className="flex gap-6">
                             <select name="country" id="country"
+                                value={addUserForm.phone.negara}
                                 onChange={(res) => setAddUserForm({
                                     ...addUserForm, phone: { ...addUserForm.phone, negara: res.target.value }
-                                })}>
+                                })}
+                                >
                                 <option value="indonesia">+62</option>
                                 <option value="singapore">+65</option>
                                 <option value="malaysia">+60</option>
@@ -80,7 +81,8 @@ const FormRegister = () => {
                             <input type="tel" name="phone" className='input-form' id="phone" 
                                 onChange={(res) => setAddUserForm({
                                     ...addUserForm, phone: { ...addUserForm.phone, nomor: res.target.value }
-                                })}/>                    
+                                })}
+                                required/>                    
                         </div>
                     </div>
                     <div className='relative'>
@@ -88,7 +90,8 @@ const FormRegister = () => {
                             <div className='flex gap-1'>Kata Sandi<p className='text-red-600'>*</p></div>
                         </label>
                         <input type={showPassword ? "text" : "password"} name="password" id="password" 
-                            className="input-form pr-10" onChange={(res) => setPassword(res.target.value)}/>
+                            className="input-form pr-10" onChange={(res) => setPassword(res.target.value)}
+                            required/>
                         <img src={showPassword ? showPass : hidePass} alt={showPassword ? "Hide password" : "Show password" } 
                             className="absolute right-3 hp:top-6 lg:top-9 cursor-pointer" 
                             onClick={togglePasswordVisibility}/>
@@ -98,7 +101,8 @@ const FormRegister = () => {
                             <div className='flex gap-1'>Konfirmasi Kata Sandi<div className='text-red-600'>*</div></div>
                         </label>
                         <input type={showRePassword ? "text" : "password"} name="confirm_password" id="confirm_password" 
-                            className="input-form pr-10" onChange={(res) => setRePassword(res.target.value)}/>
+                            className="input-form pr-10" onChange={(res) => setRePassword(res.target.value)}
+                            required/>
                         <img src={showRePassword ? showPass : hidePass} alt={showRePassword ? 'Hide password' : 'Show password'} 
                             className="absolute right-3 hp:top-6 lg:top-9 cursor-pointer" 
                             onClick={toggleRePasswordVisibility}/>
