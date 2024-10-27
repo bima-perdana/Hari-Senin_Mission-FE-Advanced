@@ -11,6 +11,7 @@ const useUserStore = create((set) => ({
         set({ isLoading: true });
         try {
             const res = await api.get('/users');
+            console.log(res.data);
             set({ listUsers: res.data });
         } catch (error) {
             console.log(error);

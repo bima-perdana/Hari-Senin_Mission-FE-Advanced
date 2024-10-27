@@ -16,7 +16,8 @@ const FormLogin = () => {
         fetchUsers();
     }, []);
 
-    const checkUser = (res) => {       
+    const checkUser = (event) => {      
+        event.preventDefault(); 
         const user = listUsers.find((user) => user.email === loginUser.email && user.password === loginUser.password);
         
         if (user) {
@@ -40,7 +41,7 @@ const FormLogin = () => {
                     <h3 className='text-center'>Masuk ke Akun</h3>
                     <p className="text-center text-input">Yuk, lanjutin belajarmu di videobelajar</p>
                 </div>
-                <form action="" method="post" className="space-y-4">
+                <form onSubmit={checkUser} method="post" className="space-y-4">
                     <div>
                         <label htmlFor="email" className="text-input">
                             <div className='flex gap-1'>
@@ -73,12 +74,11 @@ const FormLogin = () => {
                         <a href="#" className="text-home">Lupa Password?</a>
                     </div>
                     
-                    <button type='submit' className="btn-login text-button" 
-                    onClick={() => checkUser(loginUser)}>
+                    <button type='submit' className="btn-login text-button">
                     Masuk</button>
-                    <button type='submit' className="btn-register text-button" onClick={() => navigate('/register')}>Daftar</button>
+                    <button type='button' className="btn-register text-button" onClick={() => navigate('/register')}>Daftar</button>
                     <p className="text-input text-center">atau</p>
-                    <button type='submit' className="btn-google">
+                    <button type='button' className="btn-google">
                         <div className="flex justify-center gap-2 px-[26px] py-2">
                             <img src={logoGoogle} alt="logo-google" />
                             <p className="text-button text-slate-600">Masuk dengan Google</p>
