@@ -21,6 +21,7 @@ const FormLogin = () => {
         const user = listUsers.find((user) => user.email === loginUser.email && user.password === loginUser.password);
         
         if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
             navigate('/home');
         } else {
             alert('Email atau Kata Sandi yang Anda masukkan salah!');

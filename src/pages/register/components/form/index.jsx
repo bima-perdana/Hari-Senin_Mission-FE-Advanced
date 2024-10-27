@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserCrud } from '/src/hooks/useUserCrud';
 
 const FormRegister = () => {
-    const { listUsers, fetchUsers, addUser } = useUserCrud();
+    const { fetchUsers, addUser } = useUserCrud();
     const [addUserForm, setAddUserForm] = useState({
         name: "",
         email: "",
@@ -35,11 +35,10 @@ const FormRegister = () => {
             return;
         }
 
-        // Set password ke dalam form sebelum menambah user
         const updatedUserForm = { ...addUserForm, password: password };
         addUser(updatedUserForm);
 
-        // Setelah sukses, arahkan ke halaman login
+    
         navigate('/login');
     };
 
