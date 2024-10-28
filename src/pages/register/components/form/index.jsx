@@ -12,7 +12,8 @@ const FormRegister = () => {
     const [addUserForm, setAddUserForm] = useState({
         name: "",
         email: "",
-        phone: { country: "indonesia", number: "" },
+        country: "+62",
+        number: "",
         password: "",
     });
 
@@ -69,19 +70,14 @@ const FormRegister = () => {
                         </label>
                         <div className="flex gap-6">
                             <select name="country" id="country"
-                                value={addUserForm.phone.country}
-                                onChange={(res) => setAddUserForm({
-                                    ...addUserForm, phone: { ...addUserForm.phone, country: res.target.value }
-                                })}
-                                >
+                                value={addUserForm.country}
+                                onChange={(res) => setAddUserForm({ ...addUserForm, country: res.target.value })}>
                                 <option value="indonesia">+62</option>
                                 <option value="singapore">+65</option>
                                 <option value="malaysia">+60</option>
                             </select>
-                            <input type="tel" name="phone" className='input-form' id="phone" 
-                                onChange={(res) => setAddUserForm({
-                                    ...addUserForm, phone: { ...addUserForm.phone, number: res.target.value }
-                                })}
+                            <input type="tel" name="number" className='input-form' id="number" 
+                                onChange={(res) => setAddUserForm({ ...addUserForm, number: res.target.value })}
                                 required/>                    
                         </div>
                     </div>

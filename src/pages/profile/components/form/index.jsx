@@ -8,8 +8,14 @@ import { useUserCrud } from '/src/hooks/useUserCrud';
 const FormProfile = () => {
     const { listUsers, fetchUsers, updateUser, deleteUser } = useUserCrud();
     const navigate = useNavigate();
-    const [profile, setProfile] = useState({}); 
-    const [tempProfile, setTempProfile] = useState({}); 
+    const [profile, setProfile] = useState({});
+    const [tempProfile, setTempProfile] = useState({
+        name: "",
+        email: "",
+        country: "indonesia",
+        number: "",
+        password: "",
+    });
     const [showPassword, setShowPassword] = useState(false);
     const [showRePassword, setShowRePassword] = useState(false);
 
@@ -19,35 +25,37 @@ const FormProfile = () => {
         if (storedUser) {
             const parsedUser = JSON.parse(storedUser);
             setProfile(parsedUser);
-            setTempProfile(parsedUser); 
+            setTempProfile({
+                ...parsedUser,
+                country: "indonesia", // Set default country
+                number: parsedUser.number || "" // Mengisi number secara langsung
+            });
         }
     }, []);
-
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
     const toggleRePasswordVisibility = () => setShowRePassword(!showRePassword);
 
-
     const handleInputChange = (res) => {
         const { name, value } = res.target;
-        setTempProfile({ ...tempProfile, [name]: value });
-    };
 
+        setTempProfile({
+            ...tempProfile,
+            [name]: value
+        });
+    };
 
     const handleSave = () => {
-        setProfile(tempProfile); 
+        setProfile(tempProfile);
         localStorage.setItem('user', JSON.stringify(tempProfile));
         updateUser(profile.id, tempProfile);
-
-        console.log(listUsers)
     };
-
 
     const handleDelete = () => {
         deleteUser(profile.id);
+        localStorage.removeItem('user');
         navigate('/login');
     };
-
 
     return (
         <div className='flex flex-col w-full border rounded-[10px] p-6 gap-6'>
@@ -103,19 +111,19 @@ const FormProfile = () => {
                         <select 
                             name="country" 
                             id="country"
-                            value={tempProfile.phone?.country || ""}
+                            value={tempProfile.country}
                             onChange={handleInputChange}
                         >
-                            <option value="+62">+62</option>
-                            <option value="+65">+65</option>
-                            <option value="+60">+60</option>
+                            <option value="indonesia">+62</option>
+                            <option value="singapore">+65</option>
+                            <option value="malaysia">+60</option>
                         </select>
                         <input 
                             type="tel" 
                             name="number" 
                             className='input-form' 
                             id="number"
-                            value={tempProfile.phone?.number || ""}
+                            value={tempProfile.number || ""}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -155,16 +163,16 @@ const FormProfile = () => {
                     />
                 </div>
             </div>
-            <div className='flex hp:flex-col xl:flex-row hp:gap-4 xl:gap-40'>
-                <div className='w-full flex justify-end hp:flex-col xl:flex-row gap-4'>
+            <div className='flex hp:flex-col xl:flex-row xl:justify-end gap-4'>
+                <div className='xl:w-5/12 flex hp:flex-col xl:flex-row gap-4'>
                     <button type='submit' 
                     className="btn-login"
                     onClick={handleSave}>
                     Simpan</button>                
                     <button type='button' 
-                    className="btn-login bg-red-500 hover:bg-red-700 hp:hidden xl:block"
+                    className="btn-login bg-red-500 hover:bg-red-700"
                     onClick={handleDelete}>
-                    Hapus</button>
+                    Hapus Akun</button>
                 </div>
             </div>
         </div>
