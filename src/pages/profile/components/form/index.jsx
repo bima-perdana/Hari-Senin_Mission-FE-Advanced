@@ -4,9 +4,11 @@ import hidePass from '/src/assets/form/mdi_eye-off.png';
 import showPass from '/src/assets/form/mdi_eye-on.png';
 import { useNavigate } from 'react-router-dom';
 import { useUserCrud } from '/src/hooks/useUserCrud';
+import { useUserPassword } from '/src/hooks/useUserPassword'
 
 const FormProfile = () => {
-    const { listUsers, fetchUsers, updateUser, deleteUser } = useUserCrud();
+    const { fetchUsers, updateUser, deleteUser } = useUserCrud();
+    const {password, setPassword, setRePassword, checkPassword } = useUserPassword(); 
     const navigate = useNavigate();
     const [profile, setProfile] = useState({});
     const [tempProfile, setTempProfile] = useState({
@@ -27,8 +29,8 @@ const FormProfile = () => {
             setProfile(parsedUser);
             setTempProfile({
                 ...parsedUser,
-                country: "indonesia", // Set default country
-                number: parsedUser.number || "" // Mengisi number secara langsung
+                country: "indonesia",
+                number: parsedUser.number || "" 
             });
         }
     }, []);
@@ -46,6 +48,7 @@ const FormProfile = () => {
     };
 
     const handleSave = () => {
+        if(!checkPassword()) return;
         setProfile(tempProfile);
         localStorage.setItem('user', JSON.stringify(tempProfile));
         updateUser(profile.id, tempProfile);
@@ -54,7 +57,7 @@ const FormProfile = () => {
     const handleDelete = () => {
         deleteUser(profile.id);
         localStorage.removeItem('user');
-        navigate('/login');
+        navigate('/');
     };
 
     return (
