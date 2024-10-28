@@ -24,19 +24,19 @@ return (
                 {/* Dropdown ditaruh di image vector yang terdapat khusus pada layar mobile */}
                 <img src={vector} alt="vector" className='block lg:hidden sm:hidden hp:block cursor-pointer' onClick={toggleDropdown}/> 
             </div>
-                <img src={profile} alt="profile" className='cursor-pointer hidden hp:hidden sm:block lg:block' onClick={()=> navigate('/profile')}/>
+                <img src={profile} alt="profile" className='cursor-pointer hidden hp:hidden sm:block lg:block' onClick={()=> navigate('/home/profile')}/>
 
                 {/* Dropdown */}
                 {isDropdownOpen && (
             <ul className="absolute text-home top-full right-0 bg-white shadow-lg rounded-md py-2 w-[200px]">
                 <li>
-                    <a className="block py-2 px-4 hover:bg-gray-100 hover:text-orange-500" onClick={() => navigate('/profile')}>Profile</a>
+                    <a className="block py-2 px-4 hover:bg-gray-100 hover:text-orange-500" onClick={() => navigate('/home/profile')}>Profile</a>
                 </li>
                 <li>
                     <a className="block py-2 px-4 hover:bg-gray-100 hover:text-orange-500" href="#">Kategori</a>
                 </li>
                 <li>
-                    <a className="block py-2 px-4 hover:bg-gray-100 hover:text-orange-500" onClick={() => navigate('/login')}>Sign Out</a>
+                    <a className="block py-2 px-4 hover:bg-gray-100 hover:text-orange-500" onClick={() => navigate('/')}>Sign Out</a>
                 </li>
             </ul>
         )}
