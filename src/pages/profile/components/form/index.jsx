@@ -8,7 +8,7 @@ import { useUserPassword } from '/src/hooks/useUserPassword'
 
 const FormProfile = () => {
     const { fetchUsers, updateUser, deleteUser } = useUserCrud();
-    const {password, setPassword, setRePassword, checkPassword } = useUserPassword(); 
+    const {password, rePassword, setPassword, setRePassword, checkPassword } = useUserPassword(); 
     const navigate = useNavigate();
     const [profile, setProfile] = useState({});
     const [tempProfile, setTempProfile] = useState({
@@ -32,6 +32,9 @@ const FormProfile = () => {
                 country: "indonesia",
                 number: parsedUser.number || "" 
             });
+            
+            setPassword(parsedUser.password || "");
+            setRePassword(parsedUser.password || ""); 
         }
     }, []);
 
@@ -49,9 +52,11 @@ const FormProfile = () => {
 
     const handleSave = () => {
         if(!checkPassword()) return;
-        setProfile(tempProfile);
-        localStorage.setItem('user', JSON.stringify(tempProfile));
-        updateUser(profile.id, tempProfile);
+        const updatedTempProfile = { ...tempProfile, password, rePassword};
+        setProfile(updatedTempProfile);
+        localStorage.setItem('user', JSON.stringify(updatedTempProfile));
+        updateUser(profile.id, updatedTempProfile);
+        alert('Profile updated successfully!');
     };
 
     const handleDelete = () => {
@@ -138,8 +143,8 @@ const FormProfile = () => {
                         name="password" 
                         id="password" 
                         className="input-form pr-10"
-                        value={tempProfile.password || ""}
-                        onChange={handleInputChange}
+                        value={password || ""}
+                        onChange={(res) => setPassword(res.target.value)}
                     />
                     <img 
                         src={showPassword ? showPass : hidePass}
@@ -155,8 +160,8 @@ const FormProfile = () => {
                         name="confirm_password" 
                         id="confirm_password" 
                         className="input-form pr-10"
-                        value={tempProfile.password || ""}
-                        onChange={handleInputChange}
+                        value={rePassword || ""}
+                        onChange={(res) => setRePassword(res.target.value)}
                     />
                     <img 
                         src={showRePassword ? showPass : hidePass}
