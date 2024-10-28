@@ -3,6 +3,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import Auth from './Auth.jsx';
 import Home from './Home.jsx';
 import LoginPage from './pages/login/index.jsx';
 import RegisterPage from './pages/register/index.jsx';
@@ -13,26 +14,33 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/", //Rute Utama
-      element: <Home />,
+      element: <Auth />,
       children: [
         {
-          path: "home",
-          element: <HomePage />
+          index: true,
+          element: <LoginPage />
         },
         {
-          path: "profile",
-          element: <ProfilePage />    
+          path: "/register",
+          element: <RegisterPage />
         }
       ]
     },
     {
-      path: "/login",
-      element: <LoginPage />
-    },
-    {
-      path: "/register",
-      element: <RegisterPage />
-    },
+      path: "/home/",
+      element: <Home/>,
+      children: [
+        {
+          index: true,
+          element: <HomePage />
+
+        },
+        {
+          path: "profile",
+          element: <ProfilePage/>
+        }
+      ]
+    } 
   ]);
 
   return <RouterProvider router={router} />

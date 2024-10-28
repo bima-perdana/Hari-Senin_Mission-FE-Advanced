@@ -37,7 +37,7 @@ const FormRegister = () => {
         addUser(updatedUserForm);
 
     
-        navigate('/login');
+        navigate('/');
     };
 
     return (
@@ -107,7 +107,7 @@ const FormRegister = () => {
                         <a href="#" className="text-home">Lupa Password?</a>
                     </div>
                     <button type='submit' className="btn-register text-button">Daftar</button>
-                    <button type='button' className="btn-login text-button" onClick={() => navigate('/login')}>Masuk</button>
+                    <button type='button' className="btn-login text-button" onClick={() => navigate('/')}>Masuk</button>
                     <p className="text-input text-center">atau</p>
                     <button type='button' className="btn-google">
                         <div className="flex justify-center gap-2 px-[26px] py-2">

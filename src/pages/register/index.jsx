@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Nav from '../../components/nav/beforeLogin/index.jsx';
 import FormRegister from './components/form/index.jsx';
 
 
@@ -14,7 +13,6 @@ const register = () => {
 
         <div className='container mx-auto'>
             <div className='flex flex-wrap'>
-                <Nav/> {/* Untuk navbar */}
                 <div className='flex flex-col w-full hp:px-5 hp:py-7 hp:gap-6 lg:px-[120px] lg:py-20 lg:gap-9'>
                     <FormRegister/> {/* Untuk form-register */}
                 </div>
