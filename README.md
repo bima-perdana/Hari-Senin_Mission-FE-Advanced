@@ -1,8 +1,4 @@
-# React + Vite
+# Mission 1 Advanced Front End - Hari Senin
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+menggunakan FakeAPI dari MockAPI 
+VITE_API_URL=https://671c50842c842d92c38295e6.mockapi.io/api/videobelajar
