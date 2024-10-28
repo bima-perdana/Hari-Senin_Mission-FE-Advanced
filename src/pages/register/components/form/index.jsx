@@ -12,7 +12,7 @@ const FormRegister = () => {
     const [addUserForm, setAddUserForm] = useState({
         name: "",
         email: "",
-        phone: { negara: "indonesia", nomor: "" },
+        phone: { country: "indonesia", number: "" },
         password: "",
     });
 
@@ -69,9 +69,9 @@ const FormRegister = () => {
                         </label>
                         <div className="flex gap-6">
                             <select name="country" id="country"
-                                value={addUserForm.phone.negara}
+                                value={addUserForm.phone.country}
                                 onChange={(res) => setAddUserForm({
-                                    ...addUserForm, phone: { ...addUserForm.phone, negara: res.target.value }
+                                    ...addUserForm, phone: { ...addUserForm.phone, country: res.target.value }
                                 })}
                                 >
                                 <option value="indonesia">+62</option>
@@ -80,7 +80,7 @@ const FormRegister = () => {
                             </select>
                             <input type="tel" name="phone" className='input-form' id="phone" 
                                 onChange={(res) => setAddUserForm({
-                                    ...addUserForm, phone: { ...addUserForm.phone, nomor: res.target.value }
+                                    ...addUserForm, phone: { ...addUserForm.phone, number: res.target.value }
                                 })}
                                 required/>                    
                         </div>

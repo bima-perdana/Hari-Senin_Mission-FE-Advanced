@@ -52,7 +52,7 @@ const FormLogin = () => {
                         </label>
                         <input type="email" name="email" id="email" className='input-form' 
                         onChange = {(res) => setLoginUser({...loginUser, email:res.target.value })}
-                        />
+                        required/>
                     </div>
                     <div className='relative'>
                         <label htmlFor="password" className="text-input">
@@ -64,7 +64,7 @@ const FormLogin = () => {
                         <input type={showPassword ? "text" : "password"} name="password" id="password" 
                         className="input-form pr-10"
                         onChange = {(res) => setLoginUser({...loginUser, password:res.target.value })}
-                        />
+                        required/>
                         <img src={showPassword? showPass : hidePass} alt={showPassword ? "Hide password" : "Show password" } 
                         className="absolute right-3 hp:top-6 lg:top-9 cursor-pointer" 
                         onClick={togglePasswordVisibility}

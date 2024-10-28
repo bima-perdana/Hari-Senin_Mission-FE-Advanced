@@ -14,7 +14,7 @@ const useUserStore = create((set) => ({
             console.log(res.data);
             set({ listUsers: res.data });
         } catch (error) {
-            console.log(error);
+            console.log('Get Error', error);
         } finally {
             set({ isLoading: false });
         }
@@ -28,7 +28,7 @@ const useUserStore = create((set) => ({
                 listUsers: [...state.listUsers, res.data]
             }));
         } catch (error) {
-            console.error(error);
+            console.error('Update Error', error);
         }
     },
 
@@ -42,7 +42,7 @@ const useUserStore = create((set) => ({
                 ),
             }));
         } catch (error) {
-            console.error(error);
+            console.error('Update Error', error);
         }
     },
 
@@ -54,7 +54,7 @@ const useUserStore = create((set) => ({
                 listUsers: state.listUsers.filter((user) => user.id !== id),
             }));
         } catch (error) {
-            console.error(error);
+            console.error('Delete Error',error);
         }
     },
 }));

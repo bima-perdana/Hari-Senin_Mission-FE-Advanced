@@ -1,12 +1,27 @@
 import axios from 'axios';
 
-const apiURL = import.meta.env.API_URL;
+const apiURL = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
-    baseURL: 'https://671c50842c842d92c38295e6.mockapi.io/api/videobelajar',
+    baseURL: apiURL,
     headers: {
         'Content-Type': 'application/json',
     },
 });
+
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`; 
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+
 
 export default api;

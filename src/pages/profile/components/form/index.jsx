@@ -103,7 +103,7 @@ const FormProfile = () => {
                         <select 
                             name="country" 
                             id="country"
-                            value={tempProfile.phone?.negara || ""}
+                            value={tempProfile.phone?.country || ""}
                             onChange={handleInputChange}
                         >
                             <option value="+62">+62</option>
@@ -112,10 +112,10 @@ const FormProfile = () => {
                         </select>
                         <input 
                             type="tel" 
-                            name="phone" 
+                            name="number" 
                             className='input-form' 
-                            id="phone"
-                            value={tempProfile.phone?.nomor || ""}
+                            id="number"
+                            value={tempProfile.phone?.number || ""}
                             onChange={handleInputChange}
                         />
                     </div>
