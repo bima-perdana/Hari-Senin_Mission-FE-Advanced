@@ -1,4 +1,6 @@
-# Mission 1 Advanced Front End - Hari Senin
+# Mission Advanced Front End - Hari Senin
+
+Menerapkan State Management (zustand) untuk melakukan CRUD dari API
 
 # ENV
 VITE_API_URL=https://671c50842c842d92c38295e6.mockapi.io/api/videobelajar
